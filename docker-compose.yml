@@ -1,14 +1,21 @@
-version: '3.8'
-
-services: 
+version: "3"
+services:
   db:
-    build: .
-    container_name: learning_nest-db
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8 --collation-server=utf8_general_ci
+    expose:
+      - "3306"
+    ports:
+      - 3306:3306
     restart: always
-    ports: 
-      - '5432:5432'
-    volumes:
-      - .docker/dbdata:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=learning_nest
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_USER: suporte
+      MYSQL_PASSWORD: 12345
+      MYSQL_DATABASE: teste
+    volumes:
+      - teste-db:/var/lib/mysql
+
+volumes:
+  teste-db:
+

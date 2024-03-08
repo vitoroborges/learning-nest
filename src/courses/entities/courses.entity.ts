@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('courses')
-export class CreateCourse {
+export class Course {
   @PrimaryGeneratedColumn()
   readonly id: number;
 

@@ -18,29 +18,32 @@ export class CoursesController {
   constructor(private readonly courseService: CoursesService) {}
 
   @Get()
-  findAll() {
-    return this.courseService.findAll();
+  async findAll() {
+    return await this.courseService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.courseService.findOne(id);
+  async findOne(@Param('id') id: number) {
+    return await this.courseService.findOne(id);
   }
 
   @Post()
-  create(@Body() createCourseDTO: CreateCourseDTO) {
-    return this.courseService.create(createCourseDTO);
+  async create(@Body() createCourseDTO: CreateCourseDTO) {
+    return await this.courseService.create(createCourseDTO);
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateCourseDTO: UpdateCourseDTO) {
+  async update(
+    @Param('id') id: number,
+    @Body() updateCourseDTO: UpdateCourseDTO,
+  ) {
     console.log(updateCourseDTO);
-    return this.courseService.update(id, updateCourseDTO);
+    return await this.courseService.update(id, updateCourseDTO);
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  delete(@Param('id') id: number) {
-    return this.courseService.remove(id);
+  async delete(@Param('id') id: number) {
+    return await this.courseService.remove(id);
   }
 }
