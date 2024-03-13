@@ -1,5 +1,5 @@
 import { IsString } from '@nestjs/class-validator';
-
+import { Tag } from '../entities/tags.entity';
 export class CreateCourseDTO {
   @IsString()
   readonly name: string;
@@ -8,5 +8,5 @@ export class CreateCourseDTO {
   readonly description: string;
 
   @IsString({ each: true })
-  readonly tags: string[];
+  readonly tags: Tag[];
 }
